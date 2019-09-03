@@ -34,7 +34,7 @@ class Mongo(commands.Cog):
 			print('{0} removed'.format(name))
 
 	@commands.command()
-	async def saylist(self, ctx, *name):
+	async def saylist(self, ctx, *name, **kwargs):
 		self.mycol = self.mydb['{0}'.format(ctx.guild.id)]
 		if name:
 			embed = discord.Embed(title="詞彙查詢", description="內容", color=0x000000)
