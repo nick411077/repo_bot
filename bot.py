@@ -4,7 +4,7 @@ import os
 import time
 from discord.ext import commands
 
-TOKEN= 'MzcyNjE2ODExNzM0MzY4MjU3.XW33nA.1zPGK5fZV4-Rm-2R-0Rd2v6BQCQ'
+TOKEN= 'TOKEN'
 
 bot = commands.Bot(command_prefix = '$')
 
