@@ -5,6 +5,7 @@ from discord.ext import commands
 
 
 class Mongo(commands.Cog):
+	"""This is a vocabulary reply commandlist."""
 
 	def __init__(self, bot):
 		self.bot = bot
@@ -13,6 +14,7 @@ class Mongo(commands.Cog):
 
 	@commands.command()
 	async def say(self, ctx, name, *, content):
+		"""This is a vocabulary reply"""
 		self.mycol = self.mydb['{0}'.format(ctx.guild.id)]
 		writeDocument = {}
 		writeDocument['name'] = name
@@ -25,6 +27,7 @@ class Mongo(commands.Cog):
 
 	@commands.command()
 	async def sayremove(self, ctx, name):
+		"""This is a vocabulary reply remove."""
 		self.mycol = self.mydb['{0}'.format(ctx.guild.id)]
 		gg = name 
 		y = self.mycol.delete_one({'name': gg})
@@ -34,6 +37,7 @@ class Mongo(commands.Cog):
 
 	@commands.command()
 	async def saylist(self, ctx, *name, **kwargs):
+		"""Gets all saylist of mine."""
 		self.mycol = self.mydb['{0}'.format(ctx.guild.id)]
 		if name:
 			embed = discord.Embed(title="詞彙查詢", description="內容", color=0x000000)
