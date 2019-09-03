@@ -20,7 +20,6 @@ class Mongo(commands.Cog):
 		writeDocument['list.name'] = ctx.author.id
 		x = self.mycol.update_one({'name': writeDocument['name']}, {'$set': writeDocument}, upsert=True)
 		await ctx.send(f' {name} done')
-		await ctx.message.delete(delay=10)
 		print(f'{x} done')
 		print(name)
 
