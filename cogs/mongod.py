@@ -19,7 +19,7 @@ class Mongo(commands.Cog):
 		writeDocument = {}
 		writeDocument['name'] = name
 		writeDocument['content'] = content
-		writeDocument['list.name'] = ctx.author.id
+		writeDocument['author'] = ctx.author.id
 		x = self.mycol.update_one({'name': writeDocument['name']}, {'$set': writeDocument}, upsert=True)
 		await ctx.send(f' {name} done')
 		print(f'{x} done')
@@ -51,6 +51,7 @@ class Mongo(commands.Cog):
 			for y in self.mycol.find():
 				embed.add_field(name="詞彙", value=f"{y['name']}")
 				embed.add_field(name="回復", value=f"{y['content']}")
+				embed.add_field(name="最後設置者", value=f"{y['author']}")
 			await ctx.message.author.send(embed=embed)
 			"""這是全部的詞彙列表"""
 			
