@@ -45,7 +45,7 @@ class Mongo(commands.Cog):
 		else:
 			embed = discord.Embed(title="詞彙查詢", description="內容", color=0xeee657)
 			for y in self.mycol.find():
-				embed.add_field(name="詞彙", value=f"{y['name']}", inline=False)
+				embed.add_field(name="詞彙", value=f"{y['name']}")
 				embed.add_field(name="回復", value=f"{y['content']}")
 			await ctx.message.author.send(embed=embed)
 			"""這是全部的詞彙列表"""
