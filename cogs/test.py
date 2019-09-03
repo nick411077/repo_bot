@@ -15,22 +15,6 @@ class Test(commands.Cog):
 			print(f"{t} | " + message.guild.name + " | " + message.channel.name + " | " + message.author.name + ": " + message.content)
     #Commands
 	@commands.command()
-	async def test(self, ctx, *, arg):
-		await ctx.message.delete(delay=3)
-		await ctx.send(arg)
-
-	@commands.command()
-	async def bhop(self, ctx):
-		await ctx.message.delete(delay=3)
-		await ctx.send('bind mwheelup +jump')
-		await ctx.send('bind mwheeldown +jump')
-
-	@commands.command()
-	async def csgotick(self, ctx):
-		await ctx.message.delete(delay=3)
-		await ctx.send('-tickrate 128')
-
-	@commands.command()
 	async def help(self,ctx,*cog):
 		"""Gets all cogs and commands of mine."""
 		try:
