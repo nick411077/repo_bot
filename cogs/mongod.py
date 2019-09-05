@@ -36,22 +36,22 @@ class Mongo(commands.Cog):
 			print('{0} removed'.format(name))
 
 	@commands.command()
-	async def saylist(self, ctx, *name, **kwargs):
+	async def saylist(self, ctx, *name):
 		"""Gets all saylist of mine."""
 		self.mycol = self.mydb['{0}'.format(ctx.guild.id)]
 		if name:
 			embed = discord.Embed(title="詞彙查詢", description="內容", color=0x000000)
 			for x in self.mycol.find({ 'name': name[0] }):
+
 				embed.add_field(name="詞彙", value=f"{x['name']}")
 				embed.add_field(name="回復", value=f"{x['content']}")
 			await ctx.send(embed=embed)
 			"""這上面是搜尋詞彙 我不知道為啥for裡面name要套入[0] 只打name就沒辦法讀"""
 		else:
-			embed = discord.Embed(title="詞彙查詢", description="內容", color=0xeee657)
+			con_desc = ''
 			for y in self.mycol.find():
-				embed.add_field(name="詞彙", value=f"{y['name']}")
-				embed.add_field(name="回復", value=f"{y['content']}")
-				embed.add_field(name="最後設置者", value=f"{y['author']}")
+				con_desc += (f"{y['name']}\n")
+			embed = discord.Embed(title="詞彙查詢", description=f"內容\n{con_desc}", color=0xeee657)
 			await ctx.message.author.send(embed=embed)
 			"""這是全部的詞彙列表"""
 			
