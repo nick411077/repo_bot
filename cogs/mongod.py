@@ -61,15 +61,16 @@ class Mongo(commands.Cog):
 	@commands.Cog.listener()
 	async def on_message(self, message):
 		if message.author.bot == False:
-			self.mycol = self.mydb['{0}'.format(message.guild.id)]
-			name = message.content
-			if message.content.startswith(name):
-				data = name 
-				nick = {'name': data}
-				y = self.mycol.find_one(nick)
-				if y is not None:
-					await message.channel.send(y['content'])
-					print(y['_id'])
+			if message.guild:
+				self.mycol = self.mydb['{0}'.format(message.guild.id)]
+				name = message.content
+				if message.content.startswith(name):
+					data = name 
+					nick = {'name': data}
+					y = self.mycol.find_one(nick)
+					if y is not None:
+						await message.channel.send(y['content'])
+						print(y['_id'])
 
 
 
