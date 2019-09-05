@@ -31,12 +31,11 @@ class Help(commands.Cog):
 						if not c.hidden:
 							cogs_desc += (f'{c.name} - {c.help}\n')
 					halp.add_field(name=x,value=f'{self.bot.cogs[x].__doc__}\n\n{cogs_desc}',inline=False)
-				await ctx.message.add_reaction(emoji='✉')
-				await ctx.message.author.send('',embed=halp)
+				await ctx.send('',embed=halp)
 			else:
 				if len(cog) > 1:
 					halp = discord.Embed(title='Error!',description='That is way too many cogs!',color=discord.Color.red())
-					await ctx.message.author.send('',embed=halp)
+					await ctx.send('',embed=halp)
 				else:
 					found = False
 					for x in self.bot.cogs:
@@ -49,9 +48,7 @@ class Help(commands.Cog):
 								found = True
 					if not found:
 						halp = discord.Embed(title='Error!',description='How do you even use "'+cog[0]+'"?',color=discord.Color.red())
-					else:
-						await ctx.message.add_reaction(emoji='✉')
-					await ctx.message.author.send('',embed=halp)
+					await ctx.send('',embed=halp)
 		except:
 			pass
 		
