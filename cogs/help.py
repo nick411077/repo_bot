@@ -12,19 +12,25 @@ class Help(commands.Cog):
 	async def on_message(self, message):
 		if message.author.bot == False:
 			t = datetime.datetime.now()
-			print(f"{t} | " + message.guild.name + " | " + message.channel.name + " | " + message.author.name + ": " + message.content)
+			if message.guild:
+				print(f"{t} | " + message.guild.name + " | " + message.channel.name + " | " + message.author.name + ": " + message.content)
+			else:
+				print(f"{t} | " + message.author.name + ": " + message.content)	
     #Commands
 	@commands.command()
 	async def help(self,ctx,*cog):
 		"""Gets all cogs and commands of mine."""
 		try:
 			if not cog:
-				halp=discord.Embed(title='Cog Listing and Uncatergorized Commands',
-				                 description='Use `$help *cog*` to find out more about them!\n(BTW, the Cog Name Must Be in Title Case, Just Like this Sentence.)')
-				cogs_desc = ''
+				halp=discord.Embed(title='Help Listing Commands',
+				                 description='Use `$help *command*` to find out more about them!\n(BTW, the Command Name Must Be in Title Case, Just Like this Sentence.)')
+				
 				for x in self.bot.cogs:
-					cogs_desc += ('{} - {}'.format(x,self.bot.cogs[x].__doc__)+'\n')
-				halp.add_field(name='Cogs',value=cogs_desc[0:len(cogs_desc)-1],inline=False)
+					cogs_desc = ''
+					for c in self.bot.get_cog(x).get_commands():
+						if not c.hidden:
+							cogs_desc += (f'{c.name} - {c.help}\n')
+					halp.add_field(name=x,value=f'{self.bot.cogs[x].__doc__}\n\n{cogs_desc}',inline=False)
 				await ctx.message.add_reaction(emoji='✉')
 				await ctx.message.author.send('',embed=halp)
 			else:
