@@ -1,10 +1,7 @@
-import pymongo
-import discord
 import os
-import time
 from discord.ext import commands
 
-TOKEN= 'TOKEN'
+TOKEN = 'TOKEN'
 
 bot = commands.Bot(command_prefix = '$')
 
