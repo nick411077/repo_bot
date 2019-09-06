@@ -7,7 +7,7 @@ bot = commands.Bot(command_prefix='$')
 
 bot.remove_command('help')
 
-
+#TEST
 @bot.command()
 async def load(ctx, extension):
     bot.load_extension(f'cogs.{extension}')
