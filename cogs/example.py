@@ -1,6 +1,4 @@
 import discord
-import random
-
 from discord.ext import commands
 
 
@@ -46,7 +44,7 @@ class Example(commands.Cog):
 
     @commands.command()
     async def clear(self, ctx, amount=50):
-        await ctx.channel.purge(limit=amount)
+        await ctx.channel.purge(limit=amount+1)
 
 
 def setup(bot):
