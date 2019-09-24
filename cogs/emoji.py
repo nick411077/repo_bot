@@ -1,4 +1,4 @@
-import discord
+import discord,pymongo
 from discord.ext import commands
 
 
