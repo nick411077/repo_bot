@@ -9,7 +9,7 @@ class Mongo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-        self.mydb = self.myclient["runoobdb"]
+        self.mydb = self.myclient["guild_db"]
 
     @commands.command()
     async def say(self, ctx, name, *, content):
