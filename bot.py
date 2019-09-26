@@ -2,6 +2,7 @@ import os
 from discord.ext import commands
 
 
+TOKEN = os.environ['DISCORD_TOKEN']
 
 bot = commands.Bot(command_prefix='$')
 
@@ -34,4 +35,4 @@ for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         bot.load_extension(f'cogs.{filename[:-3]}')
 
-bot.run('DISCORD_TOKEN')
+bot.run(TOKEN)
