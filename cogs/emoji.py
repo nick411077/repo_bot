@@ -8,5 +8,7 @@ class Emoji(commands.Cog):
         self.bot = bot
 
 
+
+
 def setup(bot):
     bot.add_cog(Emoji(bot))

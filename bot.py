@@ -1,7 +1,8 @@
 import os
 from discord.ext import commands
+from boto.s3.connection import S3Connection
 
-TOKEN = 'TOKEN'
+TOKEN = S3Connection(os.environ['TOKEN'])
 
 bot = commands.Bot(command_prefix='$')
 
