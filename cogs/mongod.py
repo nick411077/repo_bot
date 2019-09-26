@@ -1,3 +1,4 @@
+import os
 import pymongo
 import discord
 from discord.ext import commands
