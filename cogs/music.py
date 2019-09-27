@@ -27,9 +27,7 @@ class Music(commands.Cog):
             voice = await channel.connect()
             print(f"The bot has connected to {channel}\n")
 
-        await ctx.send(f"Joined {channel}")
-
-    @commands.command(pass_context=True)
+    @commands.command(pass_context=True, aliases=['l', 'dis'])
     async def leave(self, ctx):
         channel = ctx.message.author.voice.channel
         voice = get(self.bot.voice_clients, guild=ctx.guild)
@@ -42,7 +40,7 @@ class Music(commands.Cog):
             print("Bot was told to leave voice channel, but was not in one")
             await ctx.send("Don't think I am in a voice channel")
 
-    @commands.command(pass_context=True)
+    @commands.command(pass_context=True, aliases=['p', 'pl'])
     async def play(self, ctx, url: str):
 
         song_there = os.path.isfile("song.mp3")
