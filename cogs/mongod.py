@@ -1,3 +1,4 @@
+import os
 import pymongo
 import discord
 from discord.ext import commands
@@ -8,8 +9,8 @@ class Mongo(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self.myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-        self.mydb = self.myclient["runoobdb"]
+        self.myclient = pymongo.MongoClient(os.environ["MONGODB_URI"])
+        self.mydb = self.myclient["guild_db"]
 
     @commands.command()
     async def say(self, ctx, name, *, content):
@@ -44,7 +45,7 @@ class Mongo(commands.Cog):
             for x in self.mycol.find({'name': name[0]}):
                 embed.add_field(name="詞彙", value=f"{x['name']}")
                 embed.add_field(name="回復", value=f"{x['content']}")
-                embed.add_field(name="建立者", value=f"{x['author']}")
+                embed.add_field(name="建立者", value=f"{x['author']or None}")
 
             await ctx.send(embed=embed)
             """這上面是搜尋詞彙"""
