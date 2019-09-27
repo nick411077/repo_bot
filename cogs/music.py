@@ -7,13 +7,14 @@ from discord.ext import commands
 
 from .opus_loader import load_opus_lib
 
-load_opus_lib()
+
 
 
 class Music(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
+        load_opus_lib()
 
     @commands.command(pass_context=True, aliases=['j', 'joi'])
     async def join(self, ctx):
