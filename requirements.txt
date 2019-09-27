@@ -4,3 +4,4 @@ boto
 heroku3
 dnspython
 youtube_dl
+discord.py[voice]
