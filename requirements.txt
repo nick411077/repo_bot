@@ -4,3 +4,4 @@ boto
 heroku3
 dnspython
 youtube_dl
+pynacl==1.2.1
