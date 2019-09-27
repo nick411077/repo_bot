@@ -1,4 +1,7 @@
 discord.py[voice]
+pip
+colorlog
+chardet
 pymongo==3.8.0
 boto
 heroku3
