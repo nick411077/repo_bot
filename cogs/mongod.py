@@ -45,7 +45,7 @@ class Mongo(commands.Cog):
             for x in self.mycol.find({'name': name[0]}):
                 embed.add_field(name="詞彙", value=f"{x['name']}")
                 embed.add_field(name="回復", value=f"{x['content']}")
-                embed.add_field(name="建立者", value=f"{x['author']or None}")
+                embed.add_field(name="建立者", value=f"{x['author']}")
 
             await ctx.send(embed=embed)
             """這上面是搜尋詞彙"""
