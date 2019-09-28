@@ -28,7 +28,7 @@ async def reload(ctx, extension):
     try:
         bot.unload_extension(f'cogs.{extension}')
         bot.load_extension(f'cogs.{extension}')
-        ctx.send(f'reload {extension} done')
+        await ctx.send(f'reload {extension} done')
     except Exception as e:
         print(f"{extension} cannot be loaded:")
         raise e
