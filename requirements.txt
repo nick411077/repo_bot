@@ -1,5 +1,14 @@
-discord.py==1.2.3
+discord.py[voice]
+pip
+colorlog
+chardet
+cffi
+aiohttp
+websockets
 pymongo==3.8.0
 boto
 heroku3
 dnspython
+youtube_dl
+pynacl==1.2.1
+opuslib
