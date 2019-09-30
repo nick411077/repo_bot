@@ -16,7 +16,15 @@ class Webhook(commands.Cog):
 
     @tasks.loop(seconds=5)
     async def check_status(self):
-        print('test')
+        r = requests.get(os.environ['TWITCH_URL'], headers={'Client-ID': os.environ['TWITCH_TOKEN']})
+        data = r.json()
+        with open('../cog/data.json', 'w', encoding='utf8') as wf:
+            json.dump(data, wf, ensure_ascii=False)
+        wf.close()
+
+        with open('../cog/data.json', 'r') as rf:
+            jf = json.loads(rf.read())
+        print(jf['data']['display_name']['display_name'])
 
 
 def setup(bot):
