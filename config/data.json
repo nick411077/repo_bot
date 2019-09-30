@@ -1,1 +1,13 @@
-{"data": [{"id": "95388539", "login": "latteda_", "display_name": "紅茶拿鐵だ", "type": "", "broadcaster_type": "affiliate", "description": "VR Gamer. Beat Saber.", "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/86db5a3d-4ce9-45fd-a425-2091ae9944c5-profile_image-300x300.png", "offline_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/0d376404-b97d-45e1-b243-6dd553a41879-channel_offline_image-1920x1080.jpeg", "view_count": 23630}]}
+{"data": [
+  {
+    "id": "95388539",
+    "login": "latteda_",
+    "display_name": "紅茶拿鐵だ",
+    "type": "",
+    "broadcaster_type": "affiliate",
+    "description": "VR Gamer. Beat Saber.",
+    "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/86db5a3d-4ce9-45fd-a425-2091ae9944c5-profile_image-300x300.png",
+    "offline_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/0d376404-b97d-45e1-b243-6dd553a41879-channel_offline_image-1920x1080.jpeg",
+    "view_count": 23630
+  }]
+}
