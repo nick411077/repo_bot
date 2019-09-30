@@ -26,8 +26,6 @@ class Webhook(commands.Cog):
         print(jf['data']['display_name']['display_name'])
 
 
-        await message.channel.send(f'{}')
-
 
 def setup(bot):
     bot.add_cog(Webhook(bot))
