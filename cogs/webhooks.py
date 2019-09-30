@@ -19,6 +19,7 @@ class Webhook(commands.Cog):
         with open('../cog/data.json', 'r') as rf:
             jf = json.loads(rf.read())
         print(jf['data']['display_name']['display_name'])
+        print('test')
 
 
 def setup(bot):
