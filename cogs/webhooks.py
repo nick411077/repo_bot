@@ -17,7 +17,7 @@ class Webhook(commands.Cog):
     async def check_status(self):
         client = TwitchHelix(client_id='g3v9rj6v0t5cuthn57g3s9sd1sngmz')
         stream = client.get_streams(user_logins='shroud')
-        print(stream)
+        print(stream.id)
 
 
 def setup(bot):
