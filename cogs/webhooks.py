@@ -1,8 +1,7 @@
-import json
 import os
 import discord
 from discord.ext import commands, tasks
-import requests
+from twitch import TwitchHelix
 
 
 class Webhook(commands.Cog):
@@ -16,15 +15,9 @@ class Webhook(commands.Cog):
 
     @tasks.loop(seconds=5)
     async def check_status(self):
-        r = requests.get(os.environ['TWITCH_URL'], headers={'Client-ID': os.environ['TWITCH_TOKEN']})
-        data = r.json()
-        with open('../cog/data.json', 'w', encoding='utf8') as wf:
-            json.dump(data, wf, ensure_ascii=False)
-        wf.close()
-
-        with open('../cog/data.json', 'r') as rf:
-            jf = json.loads(rf)
-        print(jf['display_name'])
+        client = TwitchHelix(client_id='g3v9rj6v0t5cuthn57g3s9sd1sngmz')
+        stream = client.get_streams(user_logins='shroud')
+        print(stream)
 
 
 def setup(bot):
