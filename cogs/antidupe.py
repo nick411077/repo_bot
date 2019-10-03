@@ -3,7 +3,7 @@ from discord.ext import commands
 import aiohttp
 
 
-class AntiDupe:
+class AntiDupe(commands.Cog):
     """Prevents users from spamming the same message over and over"""
 
     def __init__(self, bot):
@@ -17,15 +17,15 @@ class AntiDupe:
 
         # Don't do anything if there are attachments
         if not message.clean_content or \
-           not lastmsg.clean_content:
+                not lastmsg.clean_content:
             # Debugging
             print("attachments: \n" + message.attachments +
                   "\n" + lastmsg.attachments)
             return
 
         if lastmsg is not None and \
-           lastmsg.author.display_name == message.author.display_name and \
-           lastmsg.clean_content == message.clean_content:
+                lastmsg.author.display_name == message.author.display_name and \
+                lastmsg.clean_content == message.clean_content:
             try:
                 await self.bot.delete_message(message)
             except discord.Forbidden:
@@ -35,6 +35,5 @@ class AntiDupe:
 
 
 def setup(bot):
-    n = AntiDupe(bot)
-    bot.add_listener(n.dedupe, "on_message")
-    bot.add_cog(n)
+    bot.add_listener(AntiDupe.dedupe, "on_message")
+    bot.add_cog(AntiDupe(bot))
