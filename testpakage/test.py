@@ -21,4 +21,7 @@ with open('data.json', 'w', encoding='utf8') as f:
     json.dump(g, f, ensure_ascii=False, indent=4)
 with open('data.json', 'r', encoding='utf8') as rf:
     twitch = json.loads(rf.read(), object_hook=JSONObject)
-print(str(twitch.data[1].id))
+user_id = [x.id for x in twitch.data]
+
+print(user_id)
+
