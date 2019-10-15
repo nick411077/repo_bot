@@ -1,41 +1,28 @@
-import os
-import discord
-import json
-import requests
-from discord.ext import commands, tasks
+from threading import Event, Thread
+from time import sleep
+
+singal = Event()
 
 
-class JSONObject:
-    def __init__(self, d):
-        self.__dict__ = d
+def func(singal):
+    while True:
+        singal.wait()  # wait for singal turn on
+        print("do job")
+        print("job end")
+        singal.clear()  # turn off singal
 
 
-user = {'user_login': ['muse_tw']}
+t = Thread(target=func, args=[singal])
+t.start()
 
-r = requests.get('https://api.twitch.tv/helix/streams',
-                 headers={'Client-ID': 'g3v9rj6v0t5cuthn57g3s9sd1sngmz'},
-                 params=user)
-print(r.url)
-g = r.json()["data"]
-with open('data.json', 'w', encoding='utf8') as f:
-    json.dump(g, f, ensure_ascii=False, indent=4)
-with open('data.json', 'r', encoding='utf8') as rf:
-    twitch = json.loads(rf.read(), object_hook=JSONObject)
-user_id = [x.id for x in twitch]
+print("1st time")
+singal.set()  # turn on singal
+sleep(3)
 
-print(user_id)
+print("2nd time")
+singal.set()
+sleep(3)
 
-if not twitch:
-    stream_info = [dict(live=False, name='', title='', game_id=''), ]
-else:
-    stream_info = [dict(live=True, name=twitch[0].user_name, title=twitch[0].title, game_id=twitch[0].game_id), ]
-
-
-
-print(stream_info)
-
-info = stream_info
-
-if not info['live']:
-     y = False
-
+print("3rd time")
+singal.set()
+sleep(3)
