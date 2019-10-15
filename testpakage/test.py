@@ -10,7 +10,7 @@ class JSONObject:
         self.__dict__ = d
 
 
-user = {'user_login': ['twnickcan']}
+user = {'user_login': ['muse_tw']}
 
 r = requests.get('https://api.twitch.tv/helix/streams',
                  headers={'Client-ID': 'g3v9rj6v0t5cuthn57g3s9sd1sngmz'},
