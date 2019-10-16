@@ -7,6 +7,10 @@ class Emoji(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.command()
+    async def ww(self, ctx):
+        await ctx.send('<@&428895842817277953>')
+
 
 
 
