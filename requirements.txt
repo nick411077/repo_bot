@@ -13,3 +13,4 @@ youtube_dl
 pynacl==1.2.1
 opuslib
 python-twitch-client
+zc.lockfile
