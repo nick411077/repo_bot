@@ -2,32 +2,18 @@ import os
 import discord
 import youtube_dl
 
-from discord import opus
 from discord.utils import get
 from discord.ext import commands
 
+from config.opus_loader import load_opus_lib
 
-OPUS_LIBS = ['libopus-0.x86.dll', 'libopus-0.x64.dll', 'libopus-0.dll', 'libopus.so.0', 'libopus.0.dylib']
+load_opus_lib()
 
 
 class Music(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-
-    def load_opus_lib(opus_libs=OPUS_LIBS):
-        if opus.is_loaded():
-            return True
-
-        for opus_lib in opus_libs:
-            try:
-                opus.load_opus(opus_lib)
-                return
-            except OSError:
-                pass
-
-        raise RuntimeError('Could not load an opus lib. Tried %s' % (', '.join(opus_libs)))
-
 
     @commands.command(pass_context=True, aliases=['j', 'joi'])
     async def join(self, ctx):
