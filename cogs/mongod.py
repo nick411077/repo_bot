@@ -9,7 +9,7 @@ class Mongo(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self.myclient = pymongo.MongoClient(os.environ["MONGODB_URI"])
+        self.myclient = pymongo.MongoClient(os.environ.get("MONGODB_URI"))
         self.mydb = self.myclient["guild_db"]
 
     @commands.command()

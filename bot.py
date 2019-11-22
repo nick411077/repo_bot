@@ -3,7 +3,8 @@ import logging
 from discord.ext import commands
 
 
-TOKEN = os.environ['DISCORD_TOKEN']
+TOKEN = os.environ.get("DISCORD_TOKEN")
+print(TOKEN)
 
 bot = commands.Bot(command_prefix='$')
 
