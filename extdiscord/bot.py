@@ -13,14 +13,14 @@ bot.remove_command('help')
 
 @bot.command()
 async def load(ctx, extension):
-    bot.load_extension(f'cogs.{extension}')
+    bot.load_extension(f'.cogs.{extension}')
     await ctx.send(f'load {extension} done')
     print(f'load {extension} done')
 
 
 @bot.command()
 async def unload(ctx, extension):
-    bot.unload_extension(f'cogs.{extension}')
+    bot.unload_extension(f'.cogs.{extension}')
     await ctx.send(f'unload {extension} done')
     print(f'unload {extension} done')
 
@@ -28,8 +28,8 @@ async def unload(ctx, extension):
 @bot.command()
 async def reload(ctx, extension):
     try:
-        bot.unload_extension(f'cogs.{extension}')
-        bot.load_extension(f'cogs.{extension}')
+        bot.unload_extension(f'.cogs.{extension}')
+        bot.load_extension(f'.cogs.{extension}')
         await ctx.send(f'reload {extension} done')
     except Exception as e:
         print(f"{extension} cannot be loaded:")
